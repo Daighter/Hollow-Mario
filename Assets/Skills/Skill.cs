@@ -13,6 +13,7 @@ public abstract class Skill : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    protected abstract void Attack();
 
     protected void OnCollisionEnter(Collision collision)
     {

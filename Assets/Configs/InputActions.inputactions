@@ -24,8 +24,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "BaisicAttack",
-                    "type": "Button",
+                    "name": "BasicAttack",
+                    "type": "PassThrough",
                     "id": "9b3a8e89-7eaa-4bc1-97c7-3a21dcc3aa47",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -107,7 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BaisicAttack",
+                    "action": "BasicAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
