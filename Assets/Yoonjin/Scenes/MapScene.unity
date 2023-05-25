@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97137723}
   - component: {fileID: 97137724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FootRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 157308698}
   - component: {fileID: 157308697}
   - component: {fileID: 157308699}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,9 +620,9 @@ GameObject:
   - component: {fileID: 1790780419}
   - component: {fileID: 1790780424}
   - component: {fileID: 1790780425}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   jumpPower: 7
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!212 &1790780422
 SpriteRenderer:
   m_ObjectHideFlags: 0

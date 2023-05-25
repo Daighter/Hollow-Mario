@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         dir = value.Get<Vector2>();
 
-        anim.SetFloat("MoveSpeed", Mathf.Abs(dir.x));
+        anim.SetFloat("moveSpeed", Mathf.Abs(dir.x));
 
         if (dir.x > 0)
         {
