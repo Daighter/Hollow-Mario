@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public Transform player;
-    public Vector2 dir;
-    public Rigidbody2D rb;
-    public Animator anim;
-    public Collider2D collider;
-    public SpriteRenderer render;
+    [HideInInspector] public Transform player;
+    [HideInInspector] public Vector2 dir;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Animator anim;
+    [HideInInspector] public Collider2D collider;
+    [HideInInspector] public SpriteRenderer render;
+    [HideInInspector] public Vector3 returnPosition;
     public float detectRange;
     public float attackRange;
-    public Vector3 returnPosition;
+    
 
     protected virtual void Awake()
     {

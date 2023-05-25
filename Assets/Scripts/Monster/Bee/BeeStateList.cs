@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : BeeState
+public class BeeIdleState : BeeState
 {
     float idleTime;
 
-    public IdleState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeeIdleState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -50,9 +50,9 @@ public class IdleState : BeeState
     }
 }
 
-public class PatrolState : BeeState
+public class BeePatrolState : BeeState
 {
-    public PatrolState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeePatrolState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -61,7 +61,7 @@ public class PatrolState : BeeState
 
     public override void Enter()
     {
-        patrolIndex = 0;
+        
     }
 
     public override void Update()
@@ -94,9 +94,9 @@ public class PatrolState : BeeState
     }
 }
 
-public class RunawayState : BeeState
+public class BeeRunawayState : BeeState
 {
-    public RunawayState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeeRunawayState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -136,9 +136,9 @@ public class RunawayState : BeeState
     }
 }
 
-public class ReturnState : BeeState
+public class BeeReturnState : BeeState
 {
-    public ReturnState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeeReturnState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -178,11 +178,11 @@ public class ReturnState : BeeState
     }
 }
 
-public class AttackState : BeeState
+public class BeeAttackState : BeeState
 {
     float attackCool;
 
-    public AttackState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeeAttackState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -196,10 +196,12 @@ public class AttackState : BeeState
 
     public override void Update()
     {
+        dir = (player.position - transform.position).normalized;
+
         attackCool += Time.deltaTime;
-        if (attackCool > 0)
+        if (attackCool > 1.5f)
         {
-            // TODO : 파이어볼 공격
+            GameObject.Instantiate(fireball, transform.position, transform.rotation);
             attackCool = 0;
         }
     }
@@ -222,9 +224,9 @@ public class AttackState : BeeState
     }
 }
 
-public class DieState : BeeState
+public class BeeDieState : BeeState
 {
-    public DieState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
+    public BeeDieState(Bee owner, StateMachine<State, Bee> stateMachine) : base(owner, stateMachine) { }
 
     public override void Setup()
     {
@@ -233,7 +235,9 @@ public class DieState : BeeState
 
     public override void Enter()
     {
-        anim.SetTrigger("Die");
+        rb.gravityScale = 1f;
+        rb.velocity = Vector2.up * 2f;
+        anim.SetBool("IsDie", true);
         render.flipY = true;
 
         GameObject.Destroy(gameObject, 1.5f);

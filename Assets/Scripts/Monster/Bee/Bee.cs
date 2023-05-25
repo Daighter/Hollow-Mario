@@ -9,9 +9,9 @@ public class Bee : Monster
     [SerializeField] private string name;
     [SerializeField] public float moveSpeed;
     [SerializeField] public Transform[] patrolPoints;
+    [SerializeField] public FireBall fireball;
 
-    [HideInInspector] public int patrolIndex;
-    [HideInInspector] public Vector3 returnPosition;
+    [HideInInspector] public int patrolIndex = 0;
 
     StateMachine<State, Bee> stateMachine;
 
@@ -20,12 +20,12 @@ public class Bee : Monster
         base.Awake();
 
         stateMachine = new StateMachine<State, Bee>(this);
-        stateMachine.AddState(State.Idle,       new IdleState(this, stateMachine));
-        stateMachine.AddState(State.Patrol,     new PatrolState(this, stateMachine));
-        stateMachine.AddState(State.Runaway,    new RunawayState(this, stateMachine));
-        stateMachine.AddState(State.Return,     new ReturnState(this, stateMachine));
-        stateMachine.AddState(State.Attack,     new AttackState(this, stateMachine));
-        stateMachine.AddState(State.Die,        new DieState(this, stateMachine));
+        stateMachine.AddState(State.Idle,       new BeeIdleState(this, stateMachine));
+        stateMachine.AddState(State.Patrol,     new BeePatrolState(this, stateMachine));
+        stateMachine.AddState(State.Runaway,    new BeeRunawayState(this, stateMachine));
+        stateMachine.AddState(State.Return,     new BeeReturnState(this, stateMachine));
+        stateMachine.AddState(State.Attack,     new BeeAttackState(this, stateMachine));
+        stateMachine.AddState(State.Die,        new BeeDieState(this, stateMachine));
     }
 
     private void Start()
