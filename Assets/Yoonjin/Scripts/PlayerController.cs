@@ -84,7 +84,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
+        // 중복점프를 막기 위한 그라운드 체크
+        GroundCheck();
+        if (isGround == true)
+        {
             Jump();
+        }
     }
   
     private void GroundCheck()
