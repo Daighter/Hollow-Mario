@@ -1,18 +1,62 @@
+using BossStates;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string name;
+    [SerializeField] public float moveSpeed;
+    [SerializeField] public Collider2D crushCd;
+    [SerializeField] public Collider2D attackCd;
+
+    StateMachine<State, Boss> stateMachine;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+
+        stateMachine = new StateMachine<State, Boss>(this);
+        stateMachine.AddState(State.Idle,           new BossIdleState(this, stateMachine));
+        stateMachine.AddState(State.CrushAttack,    new BossCrushAttackState(this, stateMachine));
+        stateMachine.AddState(State.NormalAttack,   new BossNormalAttackState(this, stateMachine));
+        stateMachine.AddState(State.BombAttack,     new BossBombAttackState(this, stateMachine));
+        stateMachine.AddState(State.Trace,          new BossTraceState(this, stateMachine));
+        stateMachine.AddState(State.Damage,         new BossDamageState(this, stateMachine));
+        stateMachine.AddState(State.Die,            new BossDieState(this, stateMachine));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        stateMachine.Setup(State.Idle);
+        crushCd.enabled = false;
+        attackCd.enabled = false;
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        Turn();
+    }
+
+    private void Turn()
+    {
+        if (dir.x > 0)
+            render.flipX = true;
+        else if (dir.x < 0)
+            render.flipX = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
