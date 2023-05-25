@@ -14,7 +14,6 @@ public class FrogFallingState : FrogState
 
     public override void Enter()
     {
-        GameObject.Instantiate(gameObject, player.position * Vector2.up * 10f, transform.rotation);
         anim.SetBool("IsFalling", true);
     }
 
@@ -84,12 +83,12 @@ public class FrogTraceState : FrogState
     {
         isJump = true;
         anim.SetBool("IsJump", true);
+        rb.velocity = new Vector2(dir.x, 1).normalized * jumpPower;
     }
 
     public override void Update()
     {
         dir = (player.position - transform.position).normalized;
-        rb.AddForce(dir * new Vector2(1, 1).normalized * jumpPower, ForceMode2D.Impulse);
     }
 
     public override void Transition()
@@ -117,12 +116,17 @@ public class FrogDieState : FrogState
 
     public override void Enter()
     {
+        isDead = true;
+        rb.velocity = Vector2.up * 2f;
+        anim.SetBool("IsDie", true);
+        render.flipY = true;
 
+        GameObject.Destroy(gameObject, 1.5f);
     }
 
     public override void Update()
     {
-
+        
     }
 
     public override void Transition()

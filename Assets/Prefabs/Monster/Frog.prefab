@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7832805654331303404}
   - component: {fileID: 8630748603182111428}
   - component: {fileID: 582476708425186046}
-  m_Layer: 0
+  - component: {fileID: 1232899044}
+  - component: {fileID: 1232899039}
+  m_Layer: 8
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +101,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004431069, y: -0.2924568}
+  m_Offset: {x: 0.020532291, y: -0.23868975}
   serializedVersion: 2
-  m_Radius: 0.44946003
+  m_Radius: 0.32464314
 --- !u!50 &582476708425186046
 Rigidbody2D:
   serializedVersion: 4
@@ -122,4 +124,53 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!95 &1232899044
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269257637014844303}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3718b4f90b2174f4c952e6a1a0d243c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1232899039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269257637014844303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649a6263bde9d2b44b1b5d697e54b8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  dir: {x: 0, y: 0}
+  rb: {fileID: 0}
+  anim: {fileID: 0}
+  collider: {fileID: 0}
+  render: {fileID: 0}
+  returnPosition: {x: 0, y: 0, z: 0}
+  detectRange: 3
+  attackRange: 0
+  name: Frog
+  jumpPower: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isJump: 0
+  isDead: 0

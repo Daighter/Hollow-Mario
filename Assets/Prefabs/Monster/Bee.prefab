@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3667197542315200061}
   - component: {fileID: 3667197542315200060}
   - component: {fileID: -6427283329467204255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3667197542315200060
 MonoBehaviour:
   m_ObjectHideFlags: 0

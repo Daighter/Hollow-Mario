@@ -10,6 +10,7 @@ public class Frog : Monster
     [SerializeField] private LayerMask layerMask;
 
     [HideInInspector] public bool isJump;
+    [HideInInspector] public bool isDead;
     StateMachine<State, Frog> stateMachine;
 
     protected override void Awake()
@@ -23,10 +24,23 @@ public class Frog : Monster
         stateMachine.AddState(State.Die, new FrogDieState(this, stateMachine));
     }
 
+    Coroutine fallingCool;
+
+    IEnumerator FallingRoutine()
+    {
+        yield return new WaitUntil(() => isDead);
+        isDead = false;
+        Instantiate(gameObject, player.position * Vector2.up * 10f, transform.rotation);
+    }
+
+    private void OnEnable()
+    {
+        stateMachine.Setup(State.Falling);
+    }
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        stateMachine.Setup(State.Falling);
     }
 
     private void Update()
@@ -49,10 +63,16 @@ public class Frog : Monster
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == layerMask)
-        {
-            isJump = false;
-            stateMachine.Setup(State.Idle);
-        }
+        isJump = false;
+        anim.SetBool("IsFalling", false);
+        stateMachine.Setup(State.Idle);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

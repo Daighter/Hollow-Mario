@@ -124,10 +124,6 @@ public class BeeRunawayState : BeeState
         {
             stateMachine.ChangeState(State.Attack);
         }
-        else if (Vector2.Distance(player.position, transform.position) < detectRange)
-        {
-            stateMachine.ChangeState(State.Runaway);
-        }
     }
 
     public override void Exit()

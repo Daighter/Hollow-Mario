@@ -11,6 +11,7 @@ namespace FrogStates
         protected string name { get { return owner.name; } }
         protected float jumpPower { get { return owner.jumpPower; } }
         protected bool isJump { get { return owner.isJump; } set { owner.isJump = value; } }
+        protected bool isDead { get { return owner.isDead; } set { owner.isDead = value; } }
         protected Vector2 dir { get { return owner.dir; } set { owner.dir = value; } }
         protected GameObject gameObject { get { return owner.gameObject; } }
         protected SpriteRenderer render { get { return owner.render; } }
