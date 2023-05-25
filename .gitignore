@@ -72,3 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Assets/Imports
 /Assets/Yoonjin
+/Assets/Animations
+/Assets/Prefabs
+/Assets/Scripts/Monster
+/Assets/Scripts/Monster.meta
