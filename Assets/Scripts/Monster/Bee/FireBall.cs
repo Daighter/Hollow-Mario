@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBall : MonoBehaviour
 {
     [SerializeField] private float shotSpeed;
+    [SerializeField] private LayerMask playerLayer;
 
     Transform player;
     Rigidbody2D rb;
@@ -27,7 +28,7 @@ public class FireBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.layer == playerLayer)
         {
             // TODO : 플레이어에 데미지
             Destroy(gameObject);

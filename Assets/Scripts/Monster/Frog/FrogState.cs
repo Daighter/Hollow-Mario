@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace FrogStates
 {
-    public enum State { Idle, Falling, Jump, Trace, Die, Size }
+    public enum State { Idle, Falling, Trace, Die, Size }
 
     public abstract class FrogState : StateBase<State, Frog>
     {
         protected string name { get { return owner.name; } }
+        protected float jumpPower { get { return owner.jumpPower; } }
+        protected bool isJump { get { return owner.isJump; } set { owner.isJump = value; } }
         protected Vector2 dir { get { return owner.dir; } set { owner.dir = value; } }
         protected GameObject gameObject { get { return owner.gameObject; } }
         protected SpriteRenderer render { get { return owner.render; } }
