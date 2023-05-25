@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        anim.SetTrigger("Jump");
     }
 
     private void OnMove(InputValue value)
@@ -85,7 +84,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (isGround)
             Jump();
     }
   
