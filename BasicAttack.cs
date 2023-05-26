@@ -10,13 +10,10 @@ public class BasicAttack : Skill
     {
         runTime = 0.1f;
     }
-<<<<<<< HEAD
 
     private void Start()
     {
         base.Awake();
         skill_ap = player_ap * damage;
     }
-=======
->>>>>>> origin/develop
 }
