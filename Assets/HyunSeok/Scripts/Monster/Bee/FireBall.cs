@@ -29,16 +29,9 @@ public class FireBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == playerLayer)
-        {
-            IHitable target = collision.gameObject.GetComponent<IHitable>();
-            if (target != null)
-                target.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        IHitable target = collision.gameObject.GetComponent<IHitable>();
+        if (target != null && collision.gameObject.tag == "Player")
+            target.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }
