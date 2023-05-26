@@ -7,8 +7,8 @@ public class Boss : Monster
 {
     [SerializeField] private string name;
     [SerializeField] public float moveSpeed;
-    [SerializeField] public GameObject crush;
-    [SerializeField] public GameObject normal;
+    [SerializeField] public Collider2D crushCd;
+    [SerializeField] public Collider2D attackCd;
 
     StateMachine<State, Boss> stateMachine;
 
@@ -33,6 +33,8 @@ public class Boss : Monster
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         stateMachine.Setup(State.Idle);
+        crushCd.enabled = false;
+        attackCd.enabled = false;
     }
 
     private void Update()
@@ -47,9 +49,9 @@ public class Boss : Monster
 
     private void Turn()
     {
-        if (dir.x < 0)
+        if (dir.x > 0)
             render.flipX = true;
-        else if (dir.x > 0)
+        else if (dir.x < 0)
             render.flipX = false;
     }
 

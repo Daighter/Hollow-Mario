@@ -20,41 +20,32 @@ public class BossIdleState : BossState
     public override void Update()
     {
         dir = (player.position - transform.position).normalized;
-        attackTime += Time.deltaTime;
     }
 
     public override void Transition()
     {
         if (Vector2.Distance(player.position, transform.position) < attackRange)
         {
-            if (attackTime > 3f)
+            switch (attackSeqeunce)
             {
-                attackTime = 0;
-                switch (attackSeqeunce)
-                {
-                    case 0:
-                        anim.SetTrigger("CrushAttack");
-                        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                        {
-                            stateMachine.ChangeState(State.CrushAttack);
-                        }
-                        break;
-                    case 1:
-                        anim.SetTrigger("NormalAttack");
-                        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                        {
-                            stateMachine.ChangeState(State.NormalAttack);
-                        }
-                        break;
-                    case 2:
-                        anim.SetTrigger("BombAttack");
-                        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                        {
-                            stateMachine.ChangeState(State.BombAttack);
-                        }
-                        break;
-                }
-            }            
+                case 0:
+                    anim.SetTrigger("CrushAttack");
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        stateMachine.ChangeState(State.CrushAttack);
+                    }
+                    break;
+                case 1:
+                    stateMachine.ChangeState(State.NormalAttack);
+                    break;
+                case 2:
+                    anim.SetTrigger("BombAttack");
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        stateMachine.ChangeState(State.BombAttack);
+                    }
+                    break;
+            }
         }
 
         if (Vector2.Distance(player.position, transform.position) < detectRange
@@ -76,13 +67,13 @@ public class BossCrushAttackState : BossState
 
     public override void Setup()
     {
-        
+       
     }
 
     public override void Enter()
     {
-        crush.transform.position = player.position + new Vector3(0, -1, 0);
-        crush.GetComponent<Collider2D>().enabled = true;
+        crushCd.transform.position = player.position * Vector2.down * 1f;
+        crushCd.enabled = true;
     }
 
     public override void Update()
@@ -97,7 +88,7 @@ public class BossCrushAttackState : BossState
 
     public override void Exit()
     {
-        crush.GetComponent<Collider2D>().enabled = false;
+        crushCd.enabled = false;
     }
 }
 
@@ -112,7 +103,8 @@ public class BossNormalAttackState : BossState
 
     public override void Enter()
     {
-        normal.GetComponent<Collider2D>().enabled = true;
+        anim.SetTrigger("NormalAttack");
+        attackCd.enabled = true;
     }
 
     public override void Update()
@@ -127,7 +119,7 @@ public class BossNormalAttackState : BossState
 
     public override void Exit()
     {
-        normal.GetComponent<Collider2D>().enabled = false;
+        crushCd.enabled = false;
     }
 }
 
@@ -157,7 +149,7 @@ public class BossBombAttackState : BossState
 
     public override void Exit()
     {
-        
+        crushCd.enabled = false;
     }
 }
 
@@ -180,14 +172,32 @@ public class BossTraceState : BossState
     {
         dir = (player.position - transform.position).normalized;
         transform.Translate(dir * owner.moveSpeed * Time.deltaTime);
-        attackTime += Time.deltaTime;
     }
 
     public override void Transition()
     {
         if (Vector2.Distance(player.position, transform.position) < attackRange)
         {
-            stateMachine.ChangeState(State.Idle);
+            switch (attackSeqeunce)
+            {
+                case 0:
+                    anim.SetTrigger("CrushAttack");
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        stateMachine.ChangeState(State.CrushAttack);
+                    }
+                    break;
+                case 1:
+                    stateMachine.ChangeState(State.NormalAttack);
+                    break;
+                case 2:
+                    anim.SetTrigger("BombAttack");
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        stateMachine.ChangeState(State.BombAttack);
+                    }
+                    break;
+            }
         }
     }
 
