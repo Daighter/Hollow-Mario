@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     protected Rigidbody rb;
-    protected int player_ap;
-    protected int skill_ap;
+    protected int player_ap = 1;
+    protected int skill_ap = 1;
     [SerializeField] protected int skillPersent = 2;
     protected float runTime = 0.1f;
 
