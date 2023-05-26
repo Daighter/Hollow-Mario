@@ -182,7 +182,6 @@ public class BossTraceState : BossState
     {
         dir = (player.position - transform.position).normalized;
         transform.Translate(dir * owner.moveSpeed * Time.deltaTime);
-        attackTime += Time.deltaTime;
     }
 
     public override void Transition()

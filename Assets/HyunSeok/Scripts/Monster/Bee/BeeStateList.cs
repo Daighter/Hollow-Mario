@@ -232,7 +232,7 @@ public class BeeDieState : BeeState
     public override void Enter()
     {
         rb.gravityScale = 1f;
-        rb.velocity = Vector2.up * 2f;
+        rb.AddForce(Vector2.up * 3f * Time.deltaTime);
         anim.SetBool("IsDie", true);
         render.flipY = true;
 

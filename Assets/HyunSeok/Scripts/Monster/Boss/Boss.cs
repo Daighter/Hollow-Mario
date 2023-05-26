@@ -16,6 +16,8 @@ public class Boss : Monster
     {
         base.Awake();
 
+        hp = 10;
+
         crush.GetComponent<Collider2D>().enabled = false;
         normal.GetComponent<Collider2D>().enabled = false;
 

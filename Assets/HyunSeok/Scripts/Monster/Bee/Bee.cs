@@ -12,12 +12,15 @@ public class Bee : Monster
     [SerializeField] public FireBall fireball;
 
     [HideInInspector] public int patrolIndex = 0;
+    [HideInInspector] public bool isDead;
 
     StateMachine<State, Bee> stateMachine;
 
     protected override void Awake()
     {
         base.Awake();
+
+        hp = 3;
 
         stateMachine = new StateMachine<State, Bee>(this);
         stateMachine.AddState(State.Idle,       new BeeIdleState(this, stateMachine));
@@ -39,6 +42,13 @@ public class Bee : Monster
     private void Update()
     {
         stateMachine.Update();
+        DeadCheck();
+    }
+
+    private void DeadCheck()
+    {
+        if (isDead)
+            stateMachine.ChangeState(State.Die);
     }
 
     private void FixedUpdate()

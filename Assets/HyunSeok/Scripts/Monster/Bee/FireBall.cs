@@ -7,6 +7,8 @@ public class FireBall : MonoBehaviour
     [SerializeField] private float shotSpeed;
     [SerializeField] private LayerMask playerLayer;
 
+    private int damage;
+
     Transform player;
     Rigidbody2D rb;
     Collider2D col;
@@ -30,7 +32,9 @@ public class FireBall : MonoBehaviour
     {
         if (collision.gameObject.layer == playerLayer)
         {
-            // TODO : 플레이어에 데미지
+            IHitable target = collision.gameObject.GetComponent<IHitable>();
+            if (target != null)
+                target.TakeDamage(damage);
             Destroy(gameObject);
         }
         else

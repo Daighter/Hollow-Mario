@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : HpEntity
 {
+    [HideInInspector] public int damage;
     [HideInInspector] public Transform player;
     [HideInInspector] public Vector2 dir;
     [HideInInspector] public Rigidbody2D rb;
@@ -37,5 +38,12 @@ public class Monster : MonoBehaviour
         render.flipY = true;
 
         Destroy(gameObject, 1.5f);
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        IHitable target = collision.gameObject.GetComponent<IHitable>();
+        if (target != null)
+            target.TakeDamage(damage);
     }
 }
