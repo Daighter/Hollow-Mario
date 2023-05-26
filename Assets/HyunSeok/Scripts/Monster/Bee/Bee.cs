@@ -12,7 +12,6 @@ public class Bee : Monster
     [SerializeField] public FireBall fireball;
 
     [HideInInspector] public int patrolIndex = 0;
-    [HideInInspector] public bool isDead;
 
     StateMachine<State, Bee> stateMachine;
 
@@ -47,8 +46,12 @@ public class Bee : Monster
 
     private void DeadCheck()
     {
-        if (isDead)
+        if (hp <= 0)
+        {
+            hp = 0;
             stateMachine.ChangeState(State.Die);
+            Debug.Log("Bee is Dead");
+        }
     }
 
     private void FixedUpdate()
