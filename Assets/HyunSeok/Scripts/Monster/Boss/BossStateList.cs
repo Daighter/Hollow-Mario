@@ -120,7 +120,6 @@ public class BossNormalAttackState : BossState
     public override void Update()
     {
         dir = (player.position - transform.position).normalized;
-        normal.transform.position = 
     }
 
     public override void Transition()
