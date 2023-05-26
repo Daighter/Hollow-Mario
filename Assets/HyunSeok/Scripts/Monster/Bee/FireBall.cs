@@ -6,8 +6,7 @@ public class FireBall : MonoBehaviour
 {
     [SerializeField] private float shotSpeed;
     [SerializeField] private LayerMask playerLayer;
-
-    private int damage;
+    [SerializeField] private int damage;
 
     Transform player;
     Rigidbody2D rb;
