@@ -10,6 +10,7 @@ public class Frog : Monster
     [SerializeField] private LayerMask layerMask;
 
     [HideInInspector] public bool isJump;
+    [HideInInspector] public bool isDead;
     StateMachine<State, Frog> stateMachine;
 
     protected override void Awake()
@@ -55,6 +56,7 @@ public class Frog : Monster
         if (hp <= 0)
         {
             hp = 0;
+            isDead = true;
             stateMachine.ChangeState(State.Die);
             Debug.Log("Frog is Dead");
         }
