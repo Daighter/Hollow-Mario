@@ -116,7 +116,7 @@ public class FrogDieState : FrogState
 
     public override void Enter()
     {
-        rb.AddForce(Vector2.up * 3f * Time.deltaTime)
+        rb.AddForce(Vector2.up * 3f * Time.deltaTime);
         anim.SetBool("IsDie", true);
         render.flipY = true;
 
