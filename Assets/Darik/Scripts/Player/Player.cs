@@ -23,6 +23,7 @@ public class Player : HpEntity
 
     public override void TakeDamage(int damage)
     {
+        Debug.Log("Hitted");
         base.TakeDamage(damage);
         animator.SetTrigger("OnHited");
     }
