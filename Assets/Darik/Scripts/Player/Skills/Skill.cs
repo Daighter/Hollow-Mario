@@ -4,11 +4,16 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    [SerializeField] protected GameObject effectPrefab;
     protected Rigidbody rb;
     protected int player_ap;
     protected int skill_ap;
+    [SerializeField] protected int skillPersent = 2;
     protected float runTime = 0.1f;
+
+    protected void Start()
+    {
+        skill_ap = player_ap * skillPersent;
+    }
 
     protected void Update()
     {
@@ -23,5 +28,10 @@ public abstract class Skill : MonoBehaviour
         IHitable target = other.gameObject.GetComponent<IHitable>();
         if (target != null)
             target.TakeDamage(skill_ap);
+    }
+
+    public void GetPlayerAp(int player_ap)
+    {
+        this.player_ap = player_ap;
     }
 }
