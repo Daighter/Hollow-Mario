@@ -95,11 +95,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7808627949561550425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318ad43a8a54c234798060084fb6110c, type: 3}
+  m_Script: {fileID: 11500000, guid: ffba0c34e72b4cb4387f0e0e91696613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 0}
-  damage: 2
+  skillPersent: 2
 --- !u!61 &8913368085307678387
 BoxCollider2D:
   m_ObjectHideFlags: 0
