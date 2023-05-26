@@ -25,6 +25,7 @@ public class Player : HpEntity
     {
         Debug.Log("Hited");
         base.TakeDamage(damage);
+        GameManager.Data.ChangePlayerHp(hp);
         animator.SetTrigger("OnHited");
     }
 }
