@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
 
+    public Vector2 Dir { get { return dir; } }
+
     // 중력, 애니메이션, 랜더링 인스턴스 설정
     private void Awake()
     {
