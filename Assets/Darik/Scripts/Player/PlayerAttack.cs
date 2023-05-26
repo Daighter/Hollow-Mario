@@ -19,11 +19,15 @@ public class PlayerAttack : MonoBehaviour
             Attack();
     }
 
-    private Vector2 dir;
-
     private void Attack()
     {
-        //dir = GetComponent<PlayerController>().Dir;
-        Instantiate(basicAttackEffectPrefab, transform.position + Vector3.right * 1f, Quaternion.identity);
+        if (!render.flipX)
+            Instantiate(basicAttackEffectPrefab, transform.position + Vector3.right * 1f, Quaternion.identity);
+        else if (render.flipX)
+        {
+            GameObject skill = Instantiate(basicAttackEffectPrefab, transform.position + Vector3.left * 1f, Quaternion.identity);
+            skill.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
     }
 }
