@@ -20,6 +20,7 @@ public class BossIdleState : BossState
     public override void Update()
     {
         dir = (player.position - transform.position).normalized;
+
         attackTime += Time.deltaTime;
     }
 
