@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1063893231, guid: 5daaaa3527ee678438e560849439d82f, type: 3}
+  m_Sprite: {fileID: -1063893231, guid: 606adec789dc77146827ba020dbe0b5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 1, y: 1.015625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5269257637014844303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 649a6263bde9d2b44b1b5d697e54b8f6, type: 3}
+  m_Script: {fileID: 11500000, guid: f8a55e55e0cbdde4382fb130c61ddd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   render: {fileID: 0}
   returnPosition: {x: 0, y: 0, z: 0}
-  detectRange: 3
+  detectRange: 0
   attackRange: 0
   name: Frog
   jumpPower: 5
