@@ -23,7 +23,7 @@ public abstract class Skill : MonoBehaviour
         runTime -= Time.deltaTime;
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         IHitable target = other.gameObject.GetComponent<IHitable>();
         if (target != null)
