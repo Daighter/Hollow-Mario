@@ -1,6 +1,7 @@
 using BossStates;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BossIdleState : BossState
@@ -83,8 +84,7 @@ public class BossCrushAttackState : BossState
 
     public override void Enter()
     {
-        crush.transform.position = player.position + new Vector3(0, -1, 0);
-        crush.GetComponent<Collider2D>().enabled = true;
+        GameObject.Instantiate(crush, player.position + new Vector3(0, -0.2f, 0), transform.rotation);
     }
 
     public override void Update()
@@ -99,7 +99,7 @@ public class BossCrushAttackState : BossState
 
     public override void Exit()
     {
-        crush.GetComponent<Collider2D>().enabled = false;
+        GameObject.Destroy(crush);
     }
 }
 
@@ -114,7 +114,7 @@ public class BossNormalAttackState : BossState
 
     public override void Enter()
     {
-        normal.GetComponent<Collider2D>().enabled = true;
+        GameObject.Instantiate(normal, dir.x * new Vector3(transform.position.x + 0.3f, transform.position.y, transform.position.z), transform.rotation);
     }
 
     public override void Update()
@@ -129,7 +129,7 @@ public class BossNormalAttackState : BossState
 
     public override void Exit()
     {
-        normal.GetComponent<Collider2D>().enabled = false;
+        GameObject.Destroy(normal);
     }
 }
 

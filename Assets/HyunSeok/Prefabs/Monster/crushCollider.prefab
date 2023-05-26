@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792414519402013879}
   - component: {fileID: 3083636386118697854}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: crushCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
