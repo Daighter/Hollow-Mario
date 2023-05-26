@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffba0c34e72b4cb4387f0e0e91696613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 0}
   skillPersent: 2
 --- !u!61 &8913368085307678387
 BoxCollider2D:
