@@ -18,9 +18,6 @@ public class Boss : Monster
 
         hp = 10;
 
-        crush.GetComponent<Collider2D>().enabled = false;
-        normal.GetComponent<Collider2D>().enabled = false;
-
         stateMachine = new StateMachine<State, Boss>(this);
         stateMachine.AddState(State.Idle,           new BossIdleState(this, stateMachine));
         stateMachine.AddState(State.CrushAttack,    new BossCrushAttackState(this, stateMachine));
