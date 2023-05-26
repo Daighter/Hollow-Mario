@@ -28,12 +28,13 @@ public class BossIdleState : BossState
     {
         if (Vector2.Distance(player.position, transform.position) < attackRange)
         {
-            if (attackTime > 3f)
+            if (attackTime > 3.5f)
             {
                 attackTime = 0;
                 switch (attackSeqeunce)
                 {
                     case 0:
+                        rb.AddForce(Vector2.up * 5f * Time.deltaTime);
                         anim.SetTrigger("CrushAttack");
                         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
                         {
