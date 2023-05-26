@@ -71,8 +71,12 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Assets/Imports
+<<<<<<< HEAD
+/Assets/Prefabs
+=======
 /Assets/Animations/Monster/Bee
 /Assets/Animations
 /Assets/Prefabs
 /Assets/Scripts/Monster
 /Assets/Scripts/Monster.meta
+>>>>>>> develop
