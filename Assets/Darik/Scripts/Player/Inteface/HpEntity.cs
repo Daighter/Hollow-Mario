@@ -6,7 +6,7 @@ public abstract class HpEntity : MonoBehaviour, IHitable
 {
     protected int hp;
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         hp -= damage;
     }
