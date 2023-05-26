@@ -16,6 +16,9 @@ public class Boss : Monster
     {
         base.Awake();
 
+        crush.GetComponent<Collider2D>().enabled = false;
+        normal.GetComponent<Collider2D>().enabled = false;
+
         stateMachine = new StateMachine<State, Boss>(this);
         stateMachine.AddState(State.Idle,           new BossIdleState(this, stateMachine));
         stateMachine.AddState(State.CrushAttack,    new BossCrushAttackState(this, stateMachine));
@@ -30,8 +33,6 @@ public class Boss : Monster
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         stateMachine.Setup(State.Idle);
-        crush.GetComponent<Collider2D>().enabled = false;
-        normal.GetComponent<Collider2D>().enabled = false;
     }
 
     private void Update()
