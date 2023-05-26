@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private SpriteRenderer render;
     [SerializeField] private GameObject basicAttackEffectPrefab;
+
+    private void Awake()
+    {
+        render = GetComponent<SpriteRenderer>();
+    }
 
     private void OnBasicAttack(InputValue value)
     {
