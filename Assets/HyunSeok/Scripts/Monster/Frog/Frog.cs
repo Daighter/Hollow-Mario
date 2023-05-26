@@ -17,6 +17,8 @@ public class Frog : Monster
     {
         base.Awake();
 
+        hp = 2;
+
         stateMachine = new StateMachine<State, Frog>(this);
         stateMachine.AddState(State.Idle, new FrogIdleState(this, stateMachine));
         stateMachine.AddState(State.Falling, new FrogFallingState(this, stateMachine));
@@ -46,6 +48,13 @@ public class Frog : Monster
     private void Update()
     {
         stateMachine.Update();
+        DeadCheck();
+    }
+
+    private void DeadCheck()
+    {
+        if (isDead)
+            stateMachine.ChangeState(State.Die);
     }
 
     private void FixedUpdate()
@@ -61,11 +70,15 @@ public class Frog : Monster
             render.flipX = false;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
         isJump = false;
         anim.SetBool("IsFalling", false);
         stateMachine.Setup(State.Idle);
+
+        IHitable target = collision.gameObject.GetComponent<IHitable>();
+        if (target != null)
+            target.TakeDamage(damage);
     }
 
     private void OnDrawGizmos()
