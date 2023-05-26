@@ -28,7 +28,7 @@ public class BossIdleState : BossState
     {
         if (Vector2.Distance(player.position, transform.position) < attackRange)
         {
-            if (attackTime > 3.5f)
+            if (attackTime > 3f)
             {
                 attackTime = 0;
                 switch (attackSeqeunce)
@@ -175,7 +175,6 @@ public class BossTraceState : BossState
     public override void Enter()
     {
         anim.SetBool("IsMove", true);
-        attackSeqeunce = Random.Range(0, 3);
     }
 
     public override void Update()
@@ -187,6 +186,11 @@ public class BossTraceState : BossState
     public override void Transition()
     {
         if (Vector2.Distance(player.position, transform.position) < attackRange)
+        {
+            stateMachine.ChangeState(State.Idle);
+        }
+
+        if (Vector2.Distance(player.position, transform.position) > detectRange)
         {
             stateMachine.ChangeState(State.Idle);
         }

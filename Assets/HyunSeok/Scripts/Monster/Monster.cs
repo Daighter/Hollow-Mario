@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Monster : HpEntity
 {
-    [HideInInspector] public int damage;
+    [SerializeField] public int damage;
     [HideInInspector] public Transform player;
     [HideInInspector] public Vector2 dir;
     [HideInInspector] public Rigidbody2D rb;

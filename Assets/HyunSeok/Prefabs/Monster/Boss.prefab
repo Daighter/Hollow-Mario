@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c46e70d734bf9b4baaa66f2d651a21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   player: {fileID: 0}
   dir: {x: 0, y: 0}
   rb: {fileID: 0}
@@ -125,10 +126,10 @@ MonoBehaviour:
   collider: {fileID: 0}
   render: {fileID: 0}
   returnPosition: {x: 0, y: 0, z: 0}
-  detectRange: 6
+  detectRange: 10
   attackRange: 4
   name: Boss
-  moveSpeed: 2
+  moveSpeed: 3
   crush: {fileID: 8250454775646831025}
   normal: {fileID: 2378678382417074095}
 --- !u!95 &1764736722911377333
